@@ -26,17 +26,17 @@ steps:
   inputs:
     connectionType: 'OpenShift Connection Service'
     openshiftService: 'openshift-on-laptop'
-    cmd: 'start-build pytest-calculator --from-dir=/home/vsts/work/1/s --follow'
+    cmd: 'oc start-build pytest-calculator --follow'
 - task: oc-cmd@2
   inputs:
     connectionType: 'OpenShift Connection Service'
     openshiftService: 'openshift-on-laptop'
-    cmd: 'rollout latest dc/pytest-calculator'
+    cmd: 'oc rollout latest dc/pytest-calculator'
 - task: oc-cmd@2
   inputs:
     connectionType: 'OpenShift Connection Service'
     openshiftService: 'openshift-on-laptop'
-    cmd: 'rollout status dc pytest-calculator'
+    cmd: 'oc rollout status dc pytest-calculator'
 - task: oc-setup@2
   inputs:
     openshiftService: 'openshift-on-laptop'
